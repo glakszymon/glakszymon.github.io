@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>Elitarne robaczki</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- <script src="script.js"></script> -->
+    </head>
+    <body>
+        <div id="app">
+            <div class="naglowek">
+                <span class="title"><p>Elitarne robaczki</p></span>
+                <div class="menu">
+                    <span class="calendarButton"><p>kalendarz</p></span>
+                    <span class="moneyButton"><p>zbiórki</p></span>
+                </div>
+            </div>
+            <header>
+                <div class="sameLineHeader">
+                    <div class="monthsButtons">
+                        <span @click = "prevMonth" class="prev">&lt;</span>
+                        <p class="monthText">{{ months[currMonth] }} {{currYear}}</p>    
+                        <span @click="nextMonth" class="next">&gt;</span>
+                    </div>
+                    <div @click="todayJump" class="todayButton"><p>Dzisiaj</p></div>
+                </div>
+                <!-- <div>FIRST WEEK DAY {{ firstWeekDay() }} </div>
+                <div>LAST DAY {{ lastDay() }} </div>
+                <div>FirstView DAY {{ firstDayOfView }} </div> -->
+                <div>
+                    <ul class="daysOfWeek">
+                        <li>Pon</li>
+                        <li>Wt</li>
+                        <li>Śr</li>
+                        <li>Czw</li>
+                        <li>Pt</li>
+                        <li>Sob</li>
+                        <li>Ndz</li>
+                    </ul>
+                </div>
+                <div v-for="w in weeks" class="week">
+                    <div v-for="d in 7">
+                        <div :class="{ anotherMonthStyle : anotherMonth(w,d), thisMonthStyle: actualMonth(w,d), todayStyle: today(w,d)}">{{ viewDay(w,d) }}
+                            <div v-for="event in checkEvent(w,d)" @click="actualizeEvent(event)" :class="{ sprawdzianStyle: sprawdzian(event[4].v), kartkowkaStyle: kartkowka(event[4].v), projektStyle: projekt(event[4].v)}">
+                                <div class='przedmiot'>{{event[3].v}}</div>
+                                <div class="bottomEvent">
+                                    <img v-bind:src=picture(event[3].v) class="pictureStyle">
+                                    <div class="nazwa">{{event[2].v}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="point1"></div>
+                    <div class="legenda">Sprawdzian</div>
+                    <div class="circle2"></div>
+                    <div class="legenda">Kartkówka</div>
+                    <div class="circle3"></div>
+                    <div class="legenda">Inne</div>
+                </div>
+
+                <!-- <div>{{ leftPanelData != null }}</div> -->
+                <div v-if="leftPanelData !== null" class="test">
+                    <button @click="clearEvent" class="closeButton">x</button>
+                    <h1 class="nameInfo">{{leftPanelData[2].v}}</h1>
+                    <div class="subjectInfo">
+                        <img class="imgPicture" v-bind:src=picture(leftPanelData[3].v)>
+                        <div class="subjectName">{{leftPanelData[3].v}}</div>
+                    </div>
+                    <div class="typeInfo">
+                        <img class="imgPicture" src="types.png">
+                        <div class="subjectName">{{leftPanelData[4].v}}</div>
+                    </div>
+                    <div class="typeInfo">
+                        <img class="imgPicture" src="calendar.png">
+                        <div class="subjectName">{{leftPanelData[1].f}}</div>
+                    </div>
+                    <div class="opisInfo">{{leftPanelData[5].v}}</div>
+                </div>
+
+            </header>
+        </div>
+    
+        <script>
+            let app = Vue.createApp({
+                el: '#app',
+                setup() {
+                    return {
+                        currYear: Vue.ref(new Date().getFullYear()),
+                        currMonth: Vue.ref(new Date().getMonth()),
+                        weeks: Vue.ref(0),
+                        firstDayOfView: Vue.ref(new Date()),
+                        months: ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec",
+                                "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"],
+                        SHEET_ID: "1lBWra9GIa5kedaEg1yY0MV64N7T7ITO5axuoYRzg6Ho",
+                        SHEET_TITLE: 'kalendarz',
+                        SHEET_RANGE: 'A:F',
+
+                        FULL_URL:null,
+                        dane: null,
+                        length: null,
+
+                        leftPanelData: Vue.ref(null)
+                    }
+                },
+
+                methods:{
+                    actualizeEvent(event)
+                    {
+                        this.leftPanelData = event;
+                        // console.log(this.leftPanelData, this.leftPanelData != null);
+
+                    },
+
+                    clearEvent()
+                    {
+                        this.leftPanelData = null;
+                    },
+
+                    projekt(type){
+                        if(type == "projekt")
+                        {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    },
+
+                    kartkowka(type){
+                        if(type == "kartkówka")
+                        {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    },
+
+                    sprawdzian(type){
+                        if(type == "sprawdzian")
+                        {
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    },
+
+                    picture(przedmiot){
+                        // console.log("picture");
+                        switch(przedmiot) {
+                            case "matematyka":
+                                return "math.png";
+                            case "hiszpański":
+                                return "spain.png";
+                            case "niemiecki":
+                                return "germany.png";
+                            case "biologia":
+                                return "biologie.png";
+                            case "geografia":
+                                return "geography.png";
+                            case "fizyka":
+                                return "physic.png";
+                            case "informatyka":
+                                return "informatic.png";
+                            case "religia":
+                                return "religia.png";
+                            case "przedsiębiorczość":
+                                return "money.png";
+                            case "historia":
+                                return "history.png";         
+                            case "polski":
+                                return "polish.png";
+                            case "hit":
+                                return "hit.png";     
+                            case "chemia":
+                                return "chemie.png"; 
+                            default:
+                                return null;
+
+                        } 
+                    },
+
+                    downloadInfo()
+                    {
+                        this.FULL_URL = 'https://docs.google.com/spreadsheets/d/'+this.SHEET_ID + '/gviz/tq?sheet=' + this.SHEET_TITLE + '&range=' + 
+                                    this.SHEET_RANGE + '&embedded=true',
+                        fetch(this.FULL_URL)
+                        .then(res => res.text())
+                        .then(rep => {
+                            this.dane = JSON.parse(rep.substr(47).slice(0,-2))
+                            this.length = this.dane.table.rows.length;
+                            // console.log(this.dane);
+                        })
+                        .then(x=>{
+                            this.setFirstViewDay();
+                            this.countWeeks();
+                        })
+                    },
+
+                    checkEvent(weekNo,dayNo)
+                    {
+                        let date = this.date(weekNo,dayNo);
+                        let month = date.getMonth();
+                        month++;
+                        let table = [];
+
+                        for(let i = 0; i < this.length; i++)
+                        {
+                            // console.log(date);
+                            // console.log("Date("+this.currYear+','+this.currMonth+','+result.getDate()+')');
+                            
+                            let d = new Date(this.dane.table.rows[i].c[1].f);
+                            // console.log(d);
+
+                            if(date.getDate() == d.getDate() && date.getMonth() == d.getMonth() && date.getFullYear() == d.getFullYear())
+                            {//Date(2023,8,5)
+                                table.push(this.dane.table.rows[i].c);
+                                // console.log(this.dane.table.rows[i].c);
+                            }
+                        } 
+
+                        if(table.length > 0)
+                        {
+                            // console.log(table);
+                        }
+
+                        return table;  
+                    },
+
+                    nextMonth()
+                    {
+                        this.currMonth ++;
+                        
+                        if(this.currMonth > 11){
+                            this.currMonth = 0;
+                            this.currYear++;
+                        }
+
+                        this.setFirstViewDay();
+                        this.countWeeks();
+                    },
+
+                    prevMonth()
+                    {
+                        this.currMonth --;
+                        
+                        if(this.currMonth < 0){
+                            this.currMonth = 11;
+                            this.currYear--;
+                        }
+                        
+                        this.setFirstViewDay();
+                        this.countWeeks();
+
+                    },
+
+                    firstWeekDay()
+                    {
+                       return (new Date(this.currYear, this.currMonth, 1).getDay() + 6) % 7 + 1;
+                    },
+
+                    lastWeekDay()
+                    {
+                       return (new Date(this.currYear, this.currMonth + 1, 0).getDay() + 6) % 7 + 1;
+                    },
+
+                    lastDay()
+                    {
+                       return new Date(this.currYear, this.currMonth + 1, 0).getDate()
+                    },
+
+                    countWeeks()
+                    {
+                        monthdays = this.lastDay();
+                        last = this.lastWeekDay();
+                        first = this.firstWeekDay();
+
+                        // console.log(monthdays, last, first);
+
+                        this.weeks = Math.ceil((monthdays + first + 6 - last) / 7);
+                    },
+
+                    setFirstViewDay()
+                    {
+                        let fwd = this.firstWeekDay();
+                        
+                        // console.log(new Date(this.currYear, this.currMonth, 1), fwd);
+                        
+                        if (fwd === 1)
+                        {
+                            this.firstDayOfView = new Date(this.currYear, this.currMonth, 1);
+                            return
+                        }
+
+                        this.firstDayOfView = new Date(this.currYear, this.currMonth, 2-fwd);
+                    },
+
+                    viewDay(weekNo, dayNo)
+                    {
+                        var result = new Date(this.firstDayOfView);
+                        result.setDate(result.getDate() + (weekNo * 7) + dayNo - 8);
+
+                        return result.getDate();
+                    },
+
+                    date(weekNo, dayNo)
+                    {
+                        var result = new Date(this.firstDayOfView);
+                        result.setDate(result.getDate() + (weekNo * 7) + dayNo - 8);
+                        return result;
+                    },
+
+                    actualMonth(weekNo, dayNo)
+                    {
+                        return this.date(weekNo,dayNo).getMonth() == this.currMonth;
+                    },
+
+                    today(weekNo, dayNo)
+                    {
+                        if(this.date(weekNo,dayNo).getDate() == new Date().getDate() && 
+                            this.date(weekNo,dayNo).getMonth() == new Date().getMonth() && 
+                            this.date(weekNo,dayNo).getFullYear() == new Date().getFullYear())
+                        {
+                            return true;
+                        }
+                    },
+
+                    anotherMonth(weekNo, dayNo)
+                    {
+                        return this.date(weekNo,dayNo).getMonth() != this.currMonth;
+                    },
+
+                    todayJump()
+                    {
+                        this.currYear = Vue.ref(new Date().getFullYear());
+                        this.currMonth = Vue.ref(new Date().getMonth());
+
+                        this.setFirstViewDay();
+                        this.countWeeks();
+                    }
+                },
+
+                beforeMount() { 
+                    this.downloadInfo();
+                    
+                    
+                }
+
+            });
+            app.mount("#app");
+
+
+
+
+
+        </script>
+    </body>
+</html> 
