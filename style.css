@@ -131,7 +131,7 @@ header, .naglowek{
     /* border-color: chocolate;
     border-radius: 2px;  */
     margin-left: 8px;
-    width: 246px;
+    width: 243px;
     list-style: none;
 }
 
@@ -152,6 +152,7 @@ header, .naglowek{
     display: flex;
     margin-left: 40px;
     margin-right: 40px;
+    width: 100%;
 }
 
 /* .eventStyle{
@@ -186,22 +187,22 @@ header, .naglowek{
 
 ::-webkit-scrollbar {
     width: 2px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     background: #000000; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #7a99ff; 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #7a99ff; 
-  }
+}
 
 .point1{
     background-color: #6880C3;
@@ -310,4 +311,342 @@ header, .naglowek{
     border-right-width: 11px;
     border-color: #00032396;
     border-style: solid;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.full{
+    width: none;
+}
+
+@media screen and (max-width: 1768px) {
+    body{
+        background-color: #010636;
+        color: #FFF;
+        
+    }
+
+    .center{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .title{
+        visibility: hidden;
+    }
+    
+    .menu{
+        float:right;
+        padding-left:10px;
+        display: flex;
+        margin-right: 0;
+
+        margin-top: 0px;
+    }
+    
+    .calendarButton, .moneyButton{
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 80px;
+        height: 60px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    header, .naglowek{
+        width: 100%;
+    }
+    
+    .naglowek{
+        height: 60px;
+    }
+    
+    .monthsButtons{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    
+        width: 90%;
+        margin-left: 0;
+    }
+    
+    .prev, .next{
+        margin-top: 16px;
+        margin-bottom: 16px;
+        cursor: pointer;
+    }
+    
+    .monthText{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    
+    .projektStyle{
+        background-color: #AAD9D9;
+        width: 99.9%;
+        height: 27px;
+    }
+    
+    .kartkowkaStyle{
+        background-color: #925FA8;
+        width: 99.9%;
+        height: 27px;
+    }
+    
+    .sprawdzianStyle{
+        background-color: #6880C3;
+        width: 99.9%;
+        height: 27px;
+    }
+    
+    .todayButton{
+        margin-right: 0;
+    
+        text-align: center;
+        font-family: Outfit;
+    
+        border-radius: 25px;
+        border: 1px solid #673B81;
+        background: #673B81; 
+    
+        cursor: pointer;
+
+        height: 50px;
+    }
+    
+    .sameLineHeader{
+        display: flex;
+        justify-content: center;
+    
+        margin-top: 5px;
+    }
+    
+    .anotherMonthStyle{
+        border-color: #929292;
+        color: #929292;
+    }
+    
+    .thisMonthStyle{
+        border-color: #FFF;
+        color: #FFF;
+    }
+    
+    .todayStyle{
+        border-color: #e985ff;
+        color: #e985ff;
+    }
+    
+    .daysOfWeek{
+        display: flex;
+        padding-left: 0px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
+    .daysOfWeek > li{
+        /* border-color: chocolate;
+        border-radius: 2px;  */
+        margin-left: 0;
+        width: 0;
+        visibility: hidden;
+        list-style: none;
+    }
+    
+    .anotherMonthStyle, .thisMonthStyle, .todayStyle{
+        width: 96%;
+        height: 108px;
+    
+        border-width: 3px;
+        border-style: solid;
+    
+        padding: 6px;  
+        
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    
+    .week{
+        display: block;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    /* .eventStyle{
+        background-color: #925FA8;
+        width: 235px;
+        height: 27px;
+        
+    } */
+    
+    .full{
+        width: 100%;
+    }
+
+    .pictureStyle{
+        width: 15px;
+        height: 15px;
+        margin-top: 6px;
+        margin-left: 4px;
+        margin-bottom: 6px;
+    }
+    
+    .przedmiot{
+        float: right;
+        font-size: 10px;
+        margin-right: 2px;
+    }
+    
+    .nazwa{
+        margin-left: 5px;
+        margin-top: 4px;
+    }
+    
+    .bottomEvent{
+        display: flex;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 2px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: #000000; 
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #7a99ff; 
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7a99ff; 
+      }
+    
+    .point1{
+        background-color: #6880C3;
+    }
+    
+    .circle2{
+        background-color: #925FA8;
+    }
+    
+    .circle3{
+        background-color: #AAD9D9;
+    }
+    
+    .point1, .circle2, .circle3{
+        /* background-color: aquamarine; */
+        width: 10px;
+        height: 10px;
+        border-radius: 10px;
+        margin-top: 4px;
+    }
+    
+    .legend{
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        /* background-color: hotpink; */
+        margin-left: 40px;
+        margin-right: 13px;
+        margin-top: 10px;
+    }
+    
+    .legenda{
+        margin-left: 5px;
+        margin-right: 25px;
+    }
+    
+    .test{
+        position: fixed;
+        background-color: #010636;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+    
+    .closeButton{
+        float: right;
+        margin-right: 15px;
+        margin-top: 15px;
+        background: none;
+        font-size: 20px;
+        border-width: 0px;
+        font-weight: 900;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        color: #FFF;
+    }
+    
+    .closeButton:hover{
+        background: red;
+    }
+    
+    .nameInfo{
+        /* background-color: blue; */
+        margin-left: 22px;
+        margin-top: 27px;
+        margin-right: 48px;
+        font-size: 40px;
+    }
+    
+    .subjectInfo{
+        display: flex;
+    }
+    
+    .subjectName{
+        margin-left: 17px;
+        margin-top: 10px;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+    
+    .imgPicture{
+        width: 50px;
+        height: 50px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .typeInfo{
+        display: flex;
+    }
+    
+    .opisInfo{
+        margin-left: 20px;
+        margin-right: 20px;
+        height: 338px;
+        border: black solid 5px;
+        border-radius: 5%;
+        padding: 13px;
+        border-style: outset;
+    
+    }
+    
+    .test{
+        border-right-width: 11px;
+        border-color: #00032396;
+        border-style: solid;
+    }   
+
+}
+
+@media screen and (max-width: 556px) {
+    .menu {
+        float: right;
+        padding-left: 10px;
+        display: flex;
+        margin-right: 0;
+        margin-top: -60px;
+      }
 }

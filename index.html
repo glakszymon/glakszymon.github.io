@@ -28,25 +28,31 @@
                 <!-- <div>FIRST WEEK DAY {{ firstWeekDay() }} </div>
                 <div>LAST DAY {{ lastDay() }} </div>
                 <div>FirstView DAY {{ firstDayOfView }} </div> -->
-                <div>
-                    <ul class="daysOfWeek">
-                        <li>Pon</li>
-                        <li>Wt</li>
-                        <li>Śr</li>
-                        <li>Czw</li>
-                        <li>Pt</li>
-                        <li>Sob</li>
-                        <li>Ndz</li>
-                    </ul>
+                <div class="center">
+                    <div>
+                        <ul class="daysOfWeek">
+                            <li>Pon</li>
+                            <li>Wt</li>
+                            <li>Śr</li>
+                            <li>Czw</li>
+                            <li>Pt</li>
+                            <li>Sob</li>
+                            <li>Ndz</li>
+                        </ul>
+                    </div>
                 </div>
-                <div v-for="w in weeks" class="week">
-                    <div v-for="d in 7">
-                        <div :class="{ anotherMonthStyle : anotherMonth(w,d), thisMonthStyle: actualMonth(w,d), todayStyle: today(w,d)}">{{ viewDay(w,d) }}
-                            <div v-for="event in checkEvent(w,d)" @click="actualizeEvent(event)" :class="{ sprawdzianStyle: sprawdzian(event[4].v), kartkowkaStyle: kartkowka(event[4].v), projektStyle: projekt(event[4].v)}">
-                                <div class='przedmiot'>{{event[3].v}}</div>
-                                <div class="bottomEvent">
-                                    <img v-bind:src=picture(event[3].v) class="pictureStyle">
-                                    <div class="nazwa">{{event[2].v}}</div>
+                <div class="center">
+                    <div class="full">
+                        <div v-for="w in weeks" class="week">
+                            <div v-for="d in 7">
+                                <div :class="{ anotherMonthStyle : anotherMonth(w,d), thisMonthStyle: actualMonth(w,d), todayStyle: today(w,d)}">{{ viewDay(w,d) }}
+                                    <div v-for="event in checkEvent(w,d)" @click="actualizeEvent(event)" :class="{ sprawdzianStyle: sprawdzian(event[4].v), kartkowkaStyle: kartkowka(event[4].v), projektStyle: projekt(event[4].v)}">
+                                        <div class='przedmiot'>{{event[3].v}}</div>
+                                        <div class="bottomEvent">
+                                            <img v-bind:src=picture(event[3].v) class="pictureStyle">
+                                            <div class="nazwa">{{event[2].v}}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
