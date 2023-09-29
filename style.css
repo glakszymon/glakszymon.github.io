@@ -319,7 +319,11 @@ header, .naglowek{
 }
 
 .full{
-    width: none;
+    width: 100%;
+}
+
+.rozmiar{
+    width: 25%;
 }
 
 @media screen and (max-width: 1768px) {
