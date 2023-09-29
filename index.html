@@ -44,7 +44,7 @@
                 <div class="center">
                     <div class="full">
                         <div v-for="w in weeks" class="week">
-                            <div v-for="d in 7">
+                            <div v-for="d in 7" class="rozmiar">
                                 <div :class="{ anotherMonthStyle : anotherMonth(w,d), thisMonthStyle: actualMonth(w,d), todayStyle: today(w,d)}">{{ viewDay(w,d) }}
                                     <div v-for="event in checkEvent(w,d)" @click="actualizeEvent(event)" :class="{ sprawdzianStyle: sprawdzian(event[4].v), kartkowkaStyle: kartkowka(event[4].v), projektStyle: projekt(event[4].v)}">
                                         <div class='przedmiot'>{{event[3].v}}</div>
