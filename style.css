@@ -66,20 +66,20 @@ header, .naglowek{
 
 .projektStyle{
     background-color: #AAD9D9;
-    width: 235px;
-    height: 27px;
+    width: 100%;
+    /* height: 27px; */
 }
 
 .kartkowkaStyle{
     background-color: #925FA8;
-    width: 235px;
-    height: 27px;
+    width: 100%;
+    /* height: 27px; */
 }
 
 .sprawdzianStyle{
     background-color: #6880C3;
-    width: 235px;
-    height: 27px;
+    width: 100%;
+    /* height: 27px; */
 }
 
 .todayButton{
@@ -120,9 +120,10 @@ header, .naglowek{
 
 .daysOfWeek{
     display: flex;
+    align-items: center;
     padding-left: 0px;
     margin-left: 40px;
-    margin-right: 40px;
+    /* margin-right: 40px; */
     margin-top: 20px;
     margin-bottom: 2px;
 }
@@ -130,14 +131,14 @@ header, .naglowek{
 .daysOfWeek > li{
     /* border-color: chocolate;
     border-radius: 2px;  */
-    margin-left: 8px;
-    width: 243px;
+    /* margin-left: 8px; */
+    width: 19%;
     list-style: none;
 }
 
 .anotherMonthStyle, .thisMonthStyle, .todayStyle{
-    width: 235px;
-    height: 108px;
+    /* width: 235px; */
+    height: 91%;
 
     border-width: 3px;
     border-style: solid;
@@ -150,9 +151,10 @@ header, .naglowek{
 
 .week{
     display: flex;
-    margin-left: 40px;
-    margin-right: 40px;
-    width: 100%;
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 97%;
+  height: 100%;
 }
 
 /* .eventStyle{
@@ -231,7 +233,7 @@ header, .naglowek{
     /* background-color: hotpink; */
     margin-left: 40px;
     margin-right: 13px;
-    margin-top: 10px;
+    margin-top: 23%;
 }
 
 .legenda{
@@ -319,11 +321,18 @@ header, .naglowek{
 }
 
 .full{
-    width: 100%;
+    /* background-color: bisque; */
+  /* height: initial; */
+  position: absolute;
+  top: 16%;
+  left: 0%;
+  right: 0%;
+  bottom: 71%;
 }
 
 .rozmiar{
-    width: 25%;
+    width: 15.8%;
+  height: 100%;
 }
 
 @media screen and (max-width: 1768px) {
@@ -463,7 +472,7 @@ header, .naglowek{
     
     .anotherMonthStyle, .thisMonthStyle, .todayStyle{
         width: 96%;
-        height: 108px;
+        height: 91%;
     
         border-width: 3px;
         border-style: solid;
