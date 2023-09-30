@@ -137,8 +137,8 @@ header, .naglowek{
 }
 
 .anotherMonthStyle, .thisMonthStyle, .todayStyle{
-    width: 93%;
-    height: 87%;
+    width: 92%;
+    height: 84%;
 
     border-width: 3px;
     border-style: solid;
@@ -324,10 +324,10 @@ header, .naglowek{
     /* background-color: bisque; */
   /* height: initial; */
   position: absolute;
-  top: 17%;
+  top: 23%;
   left: 0%;
   right: 0%;
-  bottom: 70.5%;
+  bottom: 64.5%;
 }
 
 .rozmiar{
