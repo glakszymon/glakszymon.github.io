@@ -335,7 +335,7 @@ header, .naglowek{
   height: 100%;
 }
 
-@media screen and (max-width: 1768px) {
+@media screen and (max-width: 1000px) {
     body{
         background-color: #010636;
         color: #FFF;
