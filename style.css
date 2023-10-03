@@ -510,7 +510,21 @@ header, .naglowek{
 /*   height: 10px; */
         font-size: 36px;
 }
-
+.closeButton {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+  background: none;
+  font-size: 44px;
+  border-width: 0px;
+  font-weight: 900;
+  border-radius: 50%;
+  width: 68px;
+  height: 68px;
+  color: #FFF;
+/*   background-color: aqua; */
+  padding-bottom: 10px;
+}
 
 
       
