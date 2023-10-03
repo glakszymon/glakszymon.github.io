@@ -46,6 +46,7 @@
                         <div v-for="w in weeks" class="week">
                             <div v-for="d in 7" class="rozmiar">
                                 <div :class="{ anotherMonthStyle : anotherMonth(w,d), thisMonthStyle: actualMonth(w,d), todayStyle: today(w,d)}">{{ viewDay(w,d) }}
+                                    <div class="test2"> {{ viewWeekDay(d) }}</div>
                                     <div v-for="event in checkEvent(w,d)" @click="actualizeEvent(event)" :class="{ sprawdzianStyle: sprawdzian(event[4].v), kartkowkaStyle: kartkowka(event[4].v), projektStyle: projekt(event[4].v)}">
                                         <div class='przedmiot'>{{event[3].v}}</div>
                                         <div class="bottomEvent">
@@ -53,6 +54,7 @@
                                             <div class="nazwa">{{event[2].v}}</div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -103,6 +105,8 @@
                         SHEET_ID: "1lBWra9GIa5kedaEg1yY0MV64N7T7ITO5axuoYRzg6Ho",
                         SHEET_TITLE: 'kalendarz',
                         SHEET_RANGE: 'A:F',
+
+                        days: ["Pon", "Wt", "Śr", "Czw", "Pt", "Sob", "Ndz"],
 
                         FULL_URL:null,
                         dane: null,
@@ -310,6 +314,12 @@
                         result.setDate(result.getDate() + (weekNo * 7) + dayNo - 8);
 
                         return result.getDate();
+                    },
+
+                    viewWeekDay(dayNo){
+                        var day = new Date(this.currYear, this.currMonth, dayNo).getDay();
+                        return this.days[day];
+                        
                     },
 
                     date(weekNo, dayNo)
