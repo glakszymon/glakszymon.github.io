@@ -304,7 +304,7 @@ header, .naglowek{
     height: 338px;
     border: black solid 5px;
     border-radius: 5%;
-    padding: 13px;
+    padding: 21px;
     border-style: outset;
 
 }
@@ -468,8 +468,51 @@ header, .naglowek{
     left: 0;
     top: 0;
 }
+    .nameInfo {
+    /* background-color: blue; */
+    margin-left: 22px;
+    margin-top: 27px;
+    margin-right: 48px;
+    font-size: 75px;
+}
 
+    .subjectName {
+    margin-left: 17px;
+    margin-top: 10px;
+    font-size: 47px;
+    margin-bottom: 20px;
+}
 
+    .imgPicture {
+    width: 82px;
+    height: 82px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
 
-      
+.opisInfo{
+        margin-left: 20px;
+    margin-right: 20px;
+    height: 706px;
+    border: black solid 5px;
+    border-radius: 5%;
+    padding: 21px;
+    border-style: outset;
+    font-size: 36px;
+}
+    .closeButton {
+    float: right;
+    margin-right: 52px;
+    margin-top: 15px;
+    background: none;
+    font-size: 47px;
+    border-width: 0px;
+    font-weight: 900;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    color: #FFF;
+    /* background-color: aqua; */
+}
+
 }
