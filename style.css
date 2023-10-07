@@ -19,7 +19,15 @@ body{
     margin-left: 40px;
     padding: 0px;
 
-    cursor:pointer;
+    color: #FFF;
+    margin-top: 17px;
+
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.test2{
+    display: none;
 }
 
 .menu{
@@ -27,6 +35,7 @@ body{
     padding-left:10px;
     display: flex;
     margin-right: 20px;
+    margin-top: 17px;
 }
 
 .calendarButton, .moneyButton{
@@ -36,6 +45,8 @@ body{
     height: 60px;
     text-align: center;
     cursor: pointer;
+    text-decoration: none;
+    color: #FFF;
 }
 
 header, .naglowek{
@@ -267,6 +278,7 @@ header, .naglowek{
     width: 30px;
     height: 30px;
     color: #FFF;
+    cursor: pointer;
 }
 
 .closeButton:hover{
@@ -346,6 +358,7 @@ header, .naglowek{
     width: 100%;
     padding-bottom: 3px;
     height: fit-content;
+    cursor: pointer;
 }
 
 
