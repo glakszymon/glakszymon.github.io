@@ -23,11 +23,37 @@
                 el: '#app',
                 setup() {
                     return {
+                        SHEET_ID: "1lBWra9GIa5kedaEg1yY0MV64N7T7ITO5axuoYRzg6Ho",
+                        SHEET_TITLE: 'money',
+                        SHEET_RANGE: 'A:AH',
+                        FULL_URL:null,
+                        dane:null,
+                        length:null
 
                     }
                 },
 
                 methods:{
+                    downloadInfo()
+                    {
+                        this.FULL_URL = 'https://docs.google.com/spreadsheets/d/'+this.SHEET_ID + '/gviz/tq?sheet=' + this.SHEET_TITLE + '&range=' + 
+                                    this.SHEET_RANGE + '&embedded=true',
+                        fetch(this.FULL_URL)
+                        .then(res => res.text())
+                        .then(rep => {
+                            this.dane = JSON.parse(rep.substr(47).slice(0,-2))
+                            this.length = this.dane.table.rows.length;
+                            console.log(this.dane);
+                        })
+                        .then(x=>{
+                            // this.setFirstViewDay();
+                            // this.countWeeks();
+                        })
+                    },
+
+                    beforeMount() { 
+                    this.downloadInfo();                  
+                    }
                     
                 }
 
