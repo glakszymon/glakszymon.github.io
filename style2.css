@@ -73,3 +73,21 @@ header, .naglowek{
     margin-right: 50px;
 }
 
+table, th, td{
+    /* background-color: chartreuse; */
+    border: 1px solid rgb(83, 83, 83);
+    border-collapse: collapse;
+}
+
+th, td{
+    width: 7%;
+    height: 10px;
+}
+
+td{
+    padding-left: 10px;
+}
+
+table{
+    margin-top: 10px;
+}
